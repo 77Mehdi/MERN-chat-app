@@ -7,6 +7,8 @@ const generatTokenAndCookie = (user_id ,res)=>{
         httpOnly:true, // secrit from the xss attacks ,cross-site scripting  attacks using js to atack
         sameSiteb: "strict",
     })
+
+    
 }
 
 export default generatTokenAndCookie;

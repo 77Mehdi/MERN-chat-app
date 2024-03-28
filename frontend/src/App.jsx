@@ -1,18 +1,10 @@
 
-import './App.css'
-import Home from './pages/home/Home'
-import Login from './pages/login/Login'
-import Signup from './pages/signup/Signup'
+import React from 'react'
+import Apps from './Apps'
 
 function App() {
- 
-
   return (
-    <>
-   <div className=" justify-center h-screen flex ">
-   <Home/>
-   </div>
-    </>
+    <Apps/>
   )
 }
 

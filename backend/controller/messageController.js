@@ -38,7 +38,7 @@ export const sendMessage = async (req, res) => {
 
     } catch (error) {
         console.log("error in sendmessag controller", error.message);
-        return res.status(500).json({ 'msg': 'Intrnet server error from sendmessage' })
+        return res.status(500).json({ error: 'Intrnet server error from sendmessage' })
     }
 }
 
@@ -50,10 +50,10 @@ export const getMessage = async (req, res) => {
 
         const conversation = await Conversation.findOne({
             participants: { $all: [senderID, userChatID] },
-            
+
         }).populate("message");
 
-        return res.status(200).json(conversation.message)
+        return res.status(200).json(conversation ? conversation.message : [])
     } catch (error) {
         console.log("error in getmessage controller", error.message);
         res.status(500).json({ 'msg': 'Intrnat server error from getmesage' })

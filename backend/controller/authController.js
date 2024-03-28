@@ -22,14 +22,18 @@ export const signup = async (req, res) => {
 
         // https://avatar-placeholder.iran.liara.run/
         //  https://avatar.iran.liara.run/public/boy?username=mehdi
-        const boyProfilePic = ` https://avatar.iran.liara.run/public/boy?username=${userName}`
-        const girlProfilePic = ` https://avatar.iran.liara.run/public/girl?username=${userName}`
+        //https://api.dicebear.com/8.x/pixel-art/svg?seed=Jakj
+        //https://ui-avatars.com/api/?name=3meh
+        const boyProfilePic = ` https://i.pravatar.cc/150?u=${userName}`
+        //const girlProfilePic = ` https://avatar.iran.liara.run/public/girl?username=${userName}`
+
+        
         const newuser = new User({
             email,
             userName,
             password: hashpass,
             gender,
-            profilePic: gender === 'M' ? boyProfilePic : girlProfilePic
+            profilePic: boyProfilePic  //gender === 'M' ? boyProfilePic : girlProfilePic
         })
 
         try {
@@ -62,14 +66,19 @@ export const login = async (req, res) => {
         const { userName, password } = req.body;
         const user = await User.findOne({ userName });
         const chackPassword = await bcrypt.compare(password, user?.password || "");
-        if (!user || !chackPassword) {
-            return res.status(400).json({ 'msg': 'Invalid username or password' })
+        
+        if (!user ) {
+            return res.status(400).json({ error: 'Invalid username pless check the username' })
+        }
+
+        if (!chackPassword) {
+            return res.status(400).json({ error: 'Invalid  password pless check the password' })
         }
 
         generatTokenAndCookie(user._id, res);
 
         return res.status(201).json({
-            'msg': 'user created secssesfly', 'user': {
+            'msg': 'user login secssesfly', 'user': {
                 _id: user._id,
                 email: user.email,
                 userName: user.userName,
