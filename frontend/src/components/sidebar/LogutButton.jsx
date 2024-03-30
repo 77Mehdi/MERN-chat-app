@@ -11,6 +11,7 @@ function LogutButton() {
             className=' w-6 h-6 cursor-pointer  font-bold' 
             onClick={logout}
             />
+            
         </div>
     )
 }

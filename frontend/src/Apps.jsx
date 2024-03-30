@@ -20,6 +20,7 @@ function Apps() {
         </Routes>
 
         <Toaster />
+        
       </div>
     </>
   )

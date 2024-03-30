@@ -8,7 +8,21 @@ body{
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+	
+
 }
+
+
+body::after {
+    content: "By : elmehdielgheyb@gmail.com";
+    position: fixed;
+    bottom: 10px; 
+    left: 10px;  
+    font-size: 10px; 
+    color: white; 
+    z-index: 0; 
+}
+
 
 ::-webkit-scrollbar{
     width: 8px;
