@@ -2,12 +2,14 @@ import React, { useEffect, useRef } from 'react'
 import Mesage from './Mesage'
 import usegetMessages from '../../hooks/usegetMessages'
 import MessageSkeleton from '../skeletons/MessageSkeleton'
+import useListenMessages from '../../hooks/uselistenMessages'
 
 
 
 function Messagess() {
 
   const { messages, loading } = usegetMessages()
+  useListenMessages();  /// lisen to the sender messages and show the new message
   const lastMessage = useRef();
 
   ///######### to scroll down otamaticli in the convirsation

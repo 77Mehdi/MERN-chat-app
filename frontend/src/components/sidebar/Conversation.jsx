@@ -1,11 +1,14 @@
 import React from 'react'
 import useCnversation from '../../store/useConversation'
+import { useSoketontext } from '../../context/socketContext';
 
 function Conversation({ convirsation, emoji, lastInd }) {
 
   const { selectConversatin, setselectedConversation } = useCnversation();
 
   const isSelected = selectConversatin?._id === convirsation._id;
+  const { onlinUsers } = useSoketontext();
+  const isOnline = onlinUsers.includes(convirsation._id)
 
   return (
     <>
@@ -13,7 +16,7 @@ function Conversation({ convirsation, emoji, lastInd }) {
     ${isSelected ? "bg-sky-500" : ""} `}
         onClick={() => setselectedConversation(convirsation)}
       >
-        <div className='avatar online'>
+        <div className={`avatar ${isOnline ? "online" : " "}`}>
           <div className='w-12 rounded-full'>
             <img src={convirsation.profilePic} alt="" />
           </div>
