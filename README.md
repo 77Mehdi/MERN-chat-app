@@ -1,1 +1,1 @@
-https://mern-chat-app-q8cn.onrender.com
+https://mern-chat-app-q8cn.onrender.com/login
